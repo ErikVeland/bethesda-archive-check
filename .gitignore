@@ -63,4 +63,4 @@ typings/
 .next
 
 dist/
-tslint.json
+tslint.json.DS_Store
