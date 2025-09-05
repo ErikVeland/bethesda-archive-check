@@ -64,3 +64,4 @@ typings/
 
 dist/
 tslint.json.DS_Store
+.DS_Store
