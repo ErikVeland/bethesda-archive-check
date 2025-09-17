@@ -76,7 +76,7 @@ function runTest(context: types.IExtensionContext) {
 function main(context: types.IExtensionContext) {
   context.requireExtension('gamebryo-plugin-management');
   context.registerTest('incompatible-mod-archives', 'plugins-changed',
-    (): Bluebird<types.ITestResult> => runTest(context));
+                       (): Bluebird<types.ITestResult> => runTest(context));
 
   // context.registerTest('incompatible-mod-archives', 'loot-info-updated',
   //   (): Bluebird<types.ITestResult> => runTest(context));
@@ -110,7 +110,7 @@ async function checkForErrors(api: types.IExtensionApi, pluginsObj: any) {
   // Get the list of mods and the data folder path.
   const mods = util.getSafe(state, ['persistent', 'mods', activeGameId], {});
   const discovery = util.getSafe(state,
-    ['settings', 'gameMode', 'discovered', activeGameId, 'path'], undefined);
+                                 ['settings', 'gameMode', 'discovered', activeGameId, 'path'], undefined);
 
   const dataFolder = discovery ? path.join(discovery, 'data') : undefined;
 
@@ -218,7 +218,7 @@ function genTestResult(api: types.IExtensionApi,
 
       const plugin = a.plugin.name;
       const errMsg = t('Is loaded by {{plugin}}, but is intended for use in {{games}}.',
-        { replace: { plugin, games } });
+                       { replace: { plugin, games } });
       return `[*][b]${a.name}[/b] - ${errMsg}`;
     });
 
@@ -242,7 +242,7 @@ function genTestResult(api: types.IExtensionApi,
            + t('You can fix this problem yourself by removing any mods that are not intended to be used with {{thisGame}}. '
            + 'If you downloaded these mods from the correct game site at Nexus Mods, you should inform the mod author of this issue. '
            + 'Archives for this game must be {{ext}} files (v{{ver}}).',
-              { replace: { thisGame, ext: gameData.type, ver: gameData.version.join('/') } }),
+               { replace: { thisGame, ext: gameData.type, ver: gameData.version.join('/') } }),
     },
     severity: 'error' as types.ProblemSeverity,
   });
@@ -267,7 +267,7 @@ async function streamArchiveVersion(filePath: string): Promise<any> {
     stream.on('error', () => resolve(0));
   })
   // Destroy the file stream.
-  .finally(() => stream.destroy());
+    .finally(() => stream.destroy());
 }
 
 export default main;
